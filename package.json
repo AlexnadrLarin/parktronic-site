@@ -1,0 +1,43 @@
+{
+  "name": "FormHub",
+  "dependencies": {
+    "@babel/runtime": "^7.23.2",
+    "@mapbox/mapbox-gl-style-spec": "^14.0.0",
+    "2gis-maps": "^3.7.3",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "handlebars": "^4.7.8",
+    "mapbox-gl": "^3.0.0",
+    "morgan": "^1.10.0",
+    "uuid": "^9.0.1",
+    "uuidv4": "^6.2.13"
+  },
+  "type": "module",
+  "main": "server/server.js",
+  "scripts": {
+    "dev": "nodemon server/server.js",
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.23.2",
+    "@babel/preset-env": "^7.23.2",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.4",
+    "css-loader": "^6.8.1",
+    "eslint": "^8.52.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "handlebars-loader": "^1.7.3",
+    "html-webpack-plugin": "^5.5.3",
+    "mini-css-extract-plugin": "^2.7.6",
+    "node-sass": "^9.0.0",
+    "nodemon": "^3.0.1",
+    "postcss-loader": "^7.3.3",
+    "sass": "^1.69.5",
+    "sass-loader": "^13.3.2",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
