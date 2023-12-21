@@ -2,6 +2,17 @@ import {frontendUrl, ROUTES} from '../../config.js';
 import {goToPage} from '../../modules/router.js';
 import {STORAGE} from '../../modules/storage.js';
 import {renderPopUpWindow} from '../PopUpWindow/popup_window.js';
+import {API} from "../../modules/api.js";
+
+function b64EncodeUnicode(str) {
+  return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function(match, p1) {
+    return String.fromCharCode(parseInt(p1, 16))
+  }))
+}
+
+function utf8_to_b64( str ) {
+  return window.btoa(unescape(encodeURIComponent( str )));
+}
 
 /**
  * Функция для рендеринга меню с инструментами автора опроса.
@@ -10,7 +21,7 @@ import {renderPopUpWindow} from '../PopUpWindow/popup_window.js';
  * @function
  * @return {void}
  */
-export const renderAuthorMenu = () => {
+export const renderAuthorMenu = async() => {
   if (!STORAGE.user) {
     return;
   }
@@ -39,9 +50,12 @@ export const renderAuthorMenu = () => {
       button.classList.add('open');
       userParkingDiv.innerHTML = '';
       userParkingDiv.innerHTML = Handlebars.templates.parking_info({parking: STORAGE.user.parkings[index]});
+
     });
 
   }
+
+
 
   let flagClosed = false;
   const closeButton = document.querySelector('#author-menu-close-button');
@@ -50,12 +64,10 @@ export const renderAuthorMenu = () => {
     if (flagClosed) {
       menu.classList.add('form-author-menu__open');
       menu.classList.remove('form-author-menu__close');
-      closeButton.innerHTML = 'menu_open';
       flagClosed = false;
     } else {
       menu.classList.remove('form-author-menu__open');
       menu.classList.add('form-author-menu__close');
-      closeButton.innerHTML = 'menu';
       flagClosed = true;
     }
   });

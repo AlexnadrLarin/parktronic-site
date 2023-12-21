@@ -8,11 +8,11 @@ templates['parking_info'] = template({"1":function(container,depth0,helpers,part
         return undefined
     };
 
-  return "    <h3>"
+  return "    <h3 class=\"parking-info__address\">"
     + alias2(alias1(((stack1 = (depth0 != null ? lookupProperty(depth0,"parking") : depth0)) != null ? lookupProperty(stack1,"address") : stack1), depth0))
-    + "</h3>\n    <p>"
+    + "</h3>\n    <p class=\"parking-info__lots\">Свободно: <strong>"
     + alias2(alias1(((stack1 = (depth0 != null ? lookupProperty(depth0,"parking") : depth0)) != null ? lookupProperty(stack1,"free_lots") : stack1), depth0))
-    + "/"
+    + "</strong>/"
     + alias2(alias1(((stack1 = (depth0 != null ? lookupProperty(depth0,"parking") : depth0)) != null ? lookupProperty(stack1,"all_lots") : stack1), depth0))
     + "</p>\n";
 },"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
