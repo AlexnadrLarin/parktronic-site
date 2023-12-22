@@ -2,22 +2,51 @@
   position: fixed;
   z-index: 15;
   left: 0;
-  top: 78px;
+  top: 71px;
   width: 250px;
   height: 100%;
   padding: 45px 0;
   background-color: #FFFFFF;
   text-align: center;
-  box-shadow: 0 0 8px 0 rgba(34, 60, 80, 0.2);
+  box-shadow: 0 4px 4px 0 rgba(34, 60, 80, 0.3);
   transition: transform 0.8s;
+}
+.form-author-menu .search-form {
+  margin-left: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  width: 100px;
+  gap: 5px;
+}
+.form-author-menu .search-form .secondary-button {
+  width: 50px;
+}
+.form-author-menu input[type=text] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+.form-author-menu .search-icon {
+  padding: 5px 4px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.form-author-menu .search-icon:hover {
+  background-color: #45a049;
 }
 .form-author-menu button {
   font-size: 16px;
+  padding-left: 20px;
   border: none;
   border-radius: 0;
   display: flex;
   gap: 15px;
   align-items: center;
+  box-shadow: none;
 }
 .form-author-menu .primary-button {
   background-color: #FFFFFF;
@@ -25,6 +54,9 @@
 .form-author-menu .primary-button:hover {
   opacity: 1;
   background-color: #DDDDDD;
+}
+.form-author-menu .secondary-button {
+  margin-top: 10px;
 }
 .form-author-menu .secondary-button:hover {
   opacity: 1;
@@ -66,15 +98,16 @@
   .form-author-menu button {
     border-radius: 0;
     justify-content: center;
+    padding-left: 12px;
   }
   .form-author-menu .secondary-button {
     margin: 0;
-    font-size: 12px;
+    font-size: 14px;
   }
   .form-author-menu .primary-button {
     margin: 0 0 0 -1px;
     background-color: white;
-    font-size: 12px;
+    font-size: 14px;
   }
   .form-author-menu__close {
     transition: transform 0s;
@@ -82,12 +115,6 @@
   }
   #author-menu-close-button {
     display: none;
-  }
-  #author-menu-check-button {
-    border-radius: 18px 0 0 0;
-  }
-  #author-menu-link-button {
-    border-radius: 0 18px 0 0;
   }
 }
 @media screen and (max-width: 570px) {
@@ -98,6 +125,12 @@
   }
   .form-author-menu button span {
     width: 100%;
+  }
+  .form-author-menu .secondary-button {
+    font-size: 12px;
+  }
+  .form-author-menu .primary-button {
+    font-size: 12px;
   }
 }
 @media screen and (max-width: 480px) {

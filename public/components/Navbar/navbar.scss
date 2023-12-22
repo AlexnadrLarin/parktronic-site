@@ -22,11 +22,6 @@
     display: flex;
     justify-content: space-evenly;
     cursor: pointer;
-
-    .navbar_profile__picture {
-      object-fit: contain;
-      border-radius: 5px;
-    }
   }
 }
 
@@ -36,7 +31,7 @@
 
 @media screen {
   .navbar {
-    padding: 4px 22px;
+    padding: 10px 22px;
 
     .navbar_logo a {
       font-size: 22px;
@@ -45,19 +40,22 @@
     .navbar_profile__picture {
       height: 42px;
       width: 42px;
-      margin: 7px 0 7px 16px;
+      //margin: 7px 0 7px 16px;
     }
 
     .navbar_profile__name {
-      display: none;
+      display: flex;
+      font-size: 20px;
+      padding: 13px;
     }
+
   }
 
   .navbar_button-container {
-    padding: 9px 0;
     button {
       height: 38px;
-      width: 100px;
+      font-size: 17px;
+      width: 70px;
     }
 
     #navbar-signup-button {
@@ -69,7 +67,7 @@
 
 @media screen and (min-width: 480px) {
   .navbar {
-    padding: 17px 24px;
+    //padding: 5px 24px;
 
     .navbar_logo a {
       font-size: 22px;
@@ -87,7 +85,7 @@
       .navbar_profile__name {
         display: flex;
         font-size: 20px;
-        margin: 12px 0 6px 16px;
+        //margin: 12px 0 6px 16px;
       }
     }
 
@@ -109,37 +107,30 @@
 
 @media screen and (min-width: 768px) {
   .navbar {
-    padding: 15px 48px;
 
     .navbar_logo a {
       span {
         font-size: 36px;
-        margin: 0 8px 3px 0;
+        margin: 0;
       }
       font-size: 29px;
     }
 
     .navbar_profile {
-      margin-left: 40px;
+    }
 
-      .navbar_profile__picture {
-        height: 48px;
-        width: 48px;
-        margin: 0;
-      }
-
-      .navbar_profile__name {
-        display: flex;
-        font-size: 24px;
-        margin: 12px 0 7px 16px;
-      }
+    .navbar_profile__name {
+      display: flex;
+      font-size: 24px;
     }
   }
+
+
   .navbar_button-container {
     padding: 2px 0;
     button {
       height: 46px;
-      width: 135px;
+      width: 150px;
       margin-left: 10px;
     }
   }

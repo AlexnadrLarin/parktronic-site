@@ -215,7 +215,6 @@ export class API {
   async addParking(parking) {
     try {
       const url = ROUTES_API.post_parkings.url;
-
       const res = await fetch(url, {
         method: POST_METHOD,
         headers: {
@@ -223,20 +222,58 @@ export class API {
         },
         credentials: 'include',
         body: JSON.stringify({
-          // eslint-disable-next-line camelcase
           parking,
         }),
       });
+
 
       if (res.status === 401) {
         return {message: 'Вы не авторизованы'};
       }
 
+      if (res.status === 402) {
+        return {message: 'Такой парковки не существует'};
+      }
+
+      if (res.status === 403) {
+        return {message: 'Парковка уже добавлена'};
+      }
+
       const body = await res.json();
 
       if (res.ok) {
-        const parkings = body.parkings;
-        return {message: 'ok', parkings};
+        const currentUser = body.currentUser;
+        return {message: 'ok', currentUser};
+      }
+
+    } catch (e) {
+      console.log('Ошибка метода addParking:', e);
+      throw (e);
+    }
+  }
+
+  /**
+   * Функция для добавления вида парковки.
+   *
+   * @async
+   * @function
+   * @return {Promise<{parkings: *, message: string}>} Объект с видом парковки.
+   * @throws {Error} Если произошла ошибка при запросе или обработке данных.
+   */
+  async getParkingView(id) {
+    try {
+      const url = backendUrl + ROUTES_API.view.url + `?id=${id}`;
+
+      const res = await fetch(url, {
+        method: GET_METHOD,
+        credentials: 'include',
+      });
+
+      const body = await res.json();
+
+      if (res.ok) {
+        const views = body;
+        return {message: 'ok', views};
       }
 
     } catch (e) {

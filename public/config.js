@@ -63,7 +63,11 @@ export const ROUTES_API = {
     method: GET_METHOD,
   },
   post_parkings: {
-    url: '/parkings',
+    url: '/add_parkings',
     method: POST_METHOD,
+  },
+  view: {
+    url: '/view',
+    method: GET_METHOD,
   },
 };

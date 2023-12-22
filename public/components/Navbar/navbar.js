@@ -2,6 +2,7 @@ import {ROUTES} from '../../config.js';
 import {removeMessage} from '../Message/message.js';
 import {goToPage} from '../../modules/router.js';
 import {STORAGE} from '../../modules/storage.js';
+import {renderProfileMenu} from "../ProfileMenu/profileMenu.js";
 
 /**
  * Функция для рендеринга навбара страницы.
@@ -20,6 +21,11 @@ export const navbar = () => {
   if (user) {
     navbarElement.innerHTML = Handlebars.templates.navbar({ user: STORAGE.user });
 
+    const profileButton = document.querySelector('#navbar-profile');
+    profileButton.addEventListener('click', (e) => {
+      e.stopImmediatePropagation();
+      renderProfileMenu();
+    });
   } else {
     navbarElement.innerHTML = Handlebars.templates.navbar();
     const loginButton = document.querySelector('#navbar-login-button');

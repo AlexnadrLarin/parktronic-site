@@ -2,21 +2,56 @@
   position: fixed;
   z-index: 15;
   left: 0;
-  top: 78px;
+  top: 71px;
   width: 250px;
   height: 100%;
   padding: 45px 0;
   background-color: #FFFFFF;
   text-align: center;
-  box-shadow: 0 0 8px 0 rgba(34, 60, 80, 0.2);
+  box-shadow: 0 4px 4px 0 rgba(34, 60, 80, 0.3);
+
+  .search-form {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    width: 100px;
+    gap: 5px;
+
+    .secondary-button {
+      width: 50px;
+    }
+  }
+
+  input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+
+  .search-icon {
+    padding: 5px 4px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .search-icon:hover {
+    background-color: #45a049;
+  }
+
 
   button {
     font-size: 16px;
+    padding-left: 20px;
     border: none;
     border-radius: 0;
     display: flex;
     gap: 15px;
     align-items: center;
+    box-shadow: none;
   }
   .primary-button {
     background-color: #FFFFFF;
@@ -26,6 +61,7 @@
     }
   }
   .secondary-button {
+    margin-top: 10px;
     &:hover {
       opacity: 1;
       background-color: #7458b6;
@@ -68,15 +104,16 @@
     button {
       border-radius: 0;
       justify-content: center;
+      padding-left: 12px;
     }
     .secondary-button {
       margin: 0;
-      font-size: 12px;
+      font-size: 14px;
     }
     .primary-button {
       margin: 0 0 0 -1px;
       background-color: white;
-      font-size: 12px;
+      font-size: 14px;
     }
   }
   .form-author-menu__close {
@@ -85,12 +122,6 @@
   }
   #author-menu-close-button {
     display: none;
-  }
-  #author-menu-check-button {
-    border-radius: 18px 0 0 0;
-  }
-  #author-menu-link-button {
-    border-radius: 0 18px 0 0;
   }
 }
 
@@ -104,6 +135,12 @@
       gap: 4px;
       flex-wrap: wrap;
     }
+    .secondary-button {
+      font-size: 12px;
+    }
+    .primary-button {
+      font-size: 12px;
+    }
   }
 }
 
@@ -114,169 +151,3 @@
     }
   }
 }
-
-//.form-author-menu {
-//  position: fixed;
-//  z-index: 15;
-//  top: 78px;
-//  width: 260px;
-//  height: 100%;
-//  padding: 40px 24px;
-//  //background-color: rgba(255, 255, 255);
-//
-//
-//  .search__container {
-//    margin-top: 10px;
-//  }
-//
-//  .search__input {
-//    width: 95%;
-//    height: 40px;
-//    background-color: #F1F1F1;
-//    font-size: 15px;
-//    padding-left: 10px;
-//    border-radius: 8px;
-//  }
-//
-//  .search__button {
-//    margin-left: -25px;
-//    margin-top: 17px;
-//    border: none;
-//    height: 7px;
-//  }
-//
-//  button {
-//    display: flex;
-//    gap: 10px;
-//    align-items: center;
-//  }
-//  .primary-button {
-//    margin: 5px 0;
-//    font-size: 15px;
-//    &:hover {
-//      opacity: 1;
-//      background-color: #DDDDDD;
-//    }
-//  }
-//
-//  .secondary-button {
-//    margin: 5px 0;
-//    font-size: 15px;
-//    &:hover {
-//      opacity: 1;
-//    }
-//  }
-//  transition: transform 0.8s;
-//}
-//
-//
-//
-//
-////#author-menu-close-button {
-////  position: absolute;
-////  font-size: 36px;
-////  cursor: pointer;
-////}
-//
-////@media screen and (min-width: 768px) {
-////  .search__container {
-////    display: flex;
-////  }
-////}
-////
-////@media screen and (max-width: 768px) {
-////  .search__container {
-////    display: flex;
-////  }
-////
-////}
-//
-//
-//
-//@media screen and (max-width: 480px) {
-//  .form-author-menu {
-//    height: 36px;
-//    width: 100%;
-//    background: none;
-//    bottom: 0;
-//    top: unset;
-//    display: block;
-//    padding: 0;
-//    gap: 10px;
-//    margin-bottom: 10px;
-//    button {
-//      justify-content: center;
-//    }
-//    .secondary-button {
-//
-//      margin-top: 10px;
-//      margin-bottom: 10px;
-//      font-size: 16px;
-//    }
-//    .primary-button {
-//      margin: 0 auto 10px;
-//      width: 50%;
-//      //margin: 10px 0 0 -1px;
-//      background-color: white;
-//      font-size: 12px;
-//    }
-//  }
-//  .form-author-menu__close {
-//
-//    bottom: 0;
-//    transform: translate(0, -140px);
-//    .user-parkings-container {
-//      overflow-y: auto;
-//      padding-top: 10px;
-//      background-color: white;
-//      border-radius: 16px;
-//      border: 1px solid;
-//      -webkit-box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
-//      -moz-box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
-//      box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
-//
-//      .parking-info__address, .parking-info__lots {
-//        text-align: center;
-//        margin-bottom: 5px;
-//      }
-//    }
-//    #author-menu-close-button {
-//      width: 50%;
-//      margin: 0 auto 10px;
-//    }
-//  }
-//
-//  .form-author-menu__open {
-//    bottom: 0;
-//    transform: translate(0, -20px);
-//    .user-parkings-container {
-//      background-color: transparent;
-//        height: 40px;
-//
-//      .primary-button {
-//        display: none;
-//      }
-//
-//      h3 {
-//        display: none;
-//      }
-//
-//      p {
-//        display: none;
-//      }
-//    }
-//    #author-menu-close-button {
-//      margin: 0 auto 10px;
-//      top: 10px;
-//      width: 50%;
-//    }
-//  }
-//
-//  .search__container {
-//    display: none;
-//  }
-//
-//  //.user-parkings-container {
-//  //  background-color: white;
-//  //}
-//}

@@ -33,17 +33,41 @@ app.use(cookie());
 
 const parkings = [
   {
-    coords: [55.767808, 37.686204],
-    address: '2-я Бауманская, 3',
-    free_lots: 7,
-    all_lots: 30,
+    coords: [55.765610, 37.686165],
+    address: 'Лефортовская набережная',
+    free_lots: {
+      right_side: [1, 3],
+      left_side: [1]
+    },
+    all_lots: {
+      right_side: {
+        number: 26,
+        coords:[[55.765408, 37.685846], [55.765906, 37.686216]]
+      },
+      left_side: {
+        number: 24,
+        coords:[[55.765316, 37.686098], [55.765845, 37.686505]]
+      },
+    },
   },
   {
-    coords: [55.75578, 37.61786],
-    address: 'проезд Воскресенские Ворота',
-    free_lots: 7,
-    all_lots: 30,
-  },
+    coords: [55.747165, 37.672475],
+    address: 'Съезжинский переулок\n',
+    free_lots: {
+      right_side: [1, 3, 5, 7],
+      left_side: [2, 4]
+    },
+    all_lots: {
+      right_side: {
+        number: 8,
+        coords:[[55.747197, 37.672306], [55.747214, 37.672656]]
+      },
+      left_side: {
+        number: 7,
+        coords:[[55.747059, 37.672331], [55.747080, 37.672627]]
+      },
+    },
+  }
 ]
 
 const users = {
@@ -52,7 +76,7 @@ const users = {
     username: 'user',
     email: 'aa@aa.ru',
     password: 'password',
-    parkings: [parkings[0], parkings[1]],
+    parkings: [parkings[0]],
   },
 };
 
@@ -64,7 +88,6 @@ app.get('/is_authorized', (req, res) => {
   if (!emailSession || !users[emailSession]) {
     return res.status(401).json({error: 'Пользователь не авторизован!'});
   }
-
 
   const currentUser = users[emailSession]
   res.status(200).json({id, currentUser});
@@ -90,6 +113,18 @@ app.post('/login',  (req, res) => {
   res.status(200).json({id, currentUser: authorizedUser});
 });
 
+app.post('/logout',  (req, res) => {
+  const id = req.cookies['podvorot'];
+  const emailSession = ids[id];
+
+  if (!emailSession || !users[emailSession]) {
+    return res.status(404).json({error: 'Пользователь не авторизован!'});
+  }
+
+  res.clearCookie('podvorot');
+  res.status(200).json();
+});
+
 app.post('/signup', (req, res) => {
   const name = req.body.name;
   const username = req.body.username;
@@ -108,28 +143,38 @@ app.post('/signup', (req, res) => {
 });
 
 app.get('/get_parkings', (req, res) => {
-  const id = req.cookies['podvorot'];
-  const emailSession = ids[id];
+  // const id = req.cookies['podvorot'];
+  // const emailSession = ids[id];
+  //
+  // if (!emailSession || !users[emailSession]) {
+  //   return res.status(401).json({error: 'Пользователь не авторизован!'});
+  // }
 
-  if (!emailSession || !users[emailSession]) {
-    return res.status(401).json({error: 'Пользователь не авторизован!'});
-  }
-
-  res.status(200).json({id, parkings});
+  res.status(200).json({ parkings});
 });
 
-app.post('/parkings', (req, res) => {
+app.post('/add_parkings', (req, res) => {
   const id = req.cookies['podvorot'];
   const emailSession = ids[id];
-  const parking = req.body.parking;
+  const parking = Number(req.body.parking);
 
   if (!emailSession || !users[emailSession]) {
     return res.status(401).json({error: 'Пользователь не авторизован!'});
   }
 
-  users[id].parkings.push(parking);
+  if (!parkings[parking]) {
+    return res.status(402).json({error: 'Такой парковки не существует!'});
+  }
 
-  res.status(200).json({id, parkings});
+  if (users[emailSession].parkings[parking]) {
+    return res.status(403).json({error: 'Парковка уже добавлена!'});
+  }
+
+  users[emailSession].parkings.push(parkings[parking]);
+
+  const currentUser = users[emailSession];
+
+  res.status(200).json({id, currentUser});
 });
 
 app.get('*', (req, res) => {

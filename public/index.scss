@@ -1,18 +1,19 @@
 @import './components/Buttons/buttons';
 @import './components/Navbar/navbar';
-@import './components/AuthorMenu/authorMenu';
+@import 'components/SideBarMenu/sideBarMenu';
 @import './components/PopUpWindow/popup_window';
-@import 'components/pages/Parkings/parkings';
+@import './components/pages/Parkings/parkings';
 @import './components/pages/Main/main';
 @import './components/pages/Login/login';
 @import './components/pages/Signup/signup';
 @import './components/Message/message';
-@import './components/parkingInfo/parking_info';
+@import './components/ParkingInfo/parking_info';
+@import "./components/ProfileMenu/profileMenu";
 
 * {
   padding: 0;
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 html {
@@ -20,7 +21,6 @@ html {
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
   background-color: #F1F1F1;
-
 }
 
 input[type="text"],
@@ -30,7 +30,6 @@ input[type="number"],
 textarea {
   -webkit-appearance: none;
   -moz-appearance: none;
-  -ms-appearance: none;
   appearance: none;
   outline: 0;
   box-shadow: none;
@@ -58,22 +57,18 @@ p, h3 {
   top: 80px;
 }
 
-
 #root {
   position: relative;
 }
 
 
-//@media screen {
-//  //#message-box, #root{
-//  //  top: 64px;
-//  //}
-//  //
-//  //#root {
-//  //  margin-top: 65px;
-//  //}
-//}
-//
+@media screen {
+  #message-box, #root{
+    top: 64px;
+    z-index: 15;
+  }
+}
+
 //@media screen and (min-width: 480px){
 //  #message-box, #root{
 //    top: 76px;
